@@ -32,7 +32,7 @@ namespace XRBIT {
         let val = pins.i2cReadNumber(addr, NumberFormat.UInt8BE);
         return val;
     }
-    //% block="SetServoAngle|Num %Num|Angle %Angle"
+    //% blockId=XRBIT_SetServoAngle block="SetServoAngle|Num %Num|Angle %Angle"
     //% weight=94
     //% blockGap=10
     //% color="#0fbc11"
