@@ -38,7 +38,7 @@ namespace XRBIT {
     //% color="#006400"
     //% Num.min=1 Num.max=8 Angle.min=0 Angle.max=180
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
-    export function XiaoRGEEK_SetServoAngle(Num: SER_NUM, Angle: Angle): void {
+    export function XiaoRGEEK_SetServoAngle(Num: SER_NUM, Angle: number): void {
         let buf1 = pins.createBuffer(2);
         let buf2 = pins.createBuffer(2);
         buf1[0] = 0xFF;
