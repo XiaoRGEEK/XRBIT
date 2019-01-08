@@ -8,7 +8,9 @@
     },
     "files": [
         "README.md",
-        "XRBIT.ts"
+        "XRBIT.ts",
+        "_language/zh/XRBIT-strings.json",
+        "_language/zh-hant/XRBIT-strings.json"
     ],
     "testFiles": [
         "test.ts"
