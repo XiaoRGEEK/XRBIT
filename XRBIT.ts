@@ -32,7 +32,7 @@ namespace XRBIT {
         let val = pins.i2cReadNumber(addr, NumberFormat.UInt8BE);
         return val;
     }
-    //% blockId=XRBIT_XiaoRGEEK_SetServoAngle block="XiaoRGEEK_SetServoAngle|Num %Num|Angle %Angle"
+    //% blockId=XRBIT_XiaoRGEEK_SetServoAngle block="XiaoRGEEK_SetServoAngle|Num %Num|Angle %number"
     //% weight=94
     //% blockGap=10
     //% color="#006400"
@@ -42,7 +42,7 @@ namespace XRBIT {
         let buf1 = pins.createBuffer(2);
         let buf2 = pins.createBuffer(2);
         buf1[0] = 0xFF;
-        buf1[1] = NUM;
+        buf1[1] = Num;
         buf2[0] = Angle;
         buf2[1] = 0xFF;
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf1);
