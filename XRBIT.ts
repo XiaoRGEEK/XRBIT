@@ -38,7 +38,7 @@ enum PIN {
 }
 
 //% weight=5 color=#9900CC icon="\uf53b"
-namespace MCP23017 {
+namespace XRBIT {
     const MCP23017_ADDRESS = 0x20
 
     const MCP23017_IODIRA = 0x00
