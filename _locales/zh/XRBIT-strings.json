@@ -1,3 +1,4 @@
 {
   "XRBIT.SetServoAngle|block": "设置舵机|编号 %Num|角度 %Angle",
+  "XRBIT.SetServoAngle2|block": "设置舵机|编号 %Num|角度 %Angle"
 }
