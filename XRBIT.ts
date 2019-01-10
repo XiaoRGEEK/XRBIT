@@ -80,6 +80,33 @@ namespace XRBIT {
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf1);
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
     }
-
+    //% blockId=XRBIT_ReSetServoAngle block="ReSetServoAngle"
+    //% weight=94
+    //% blockGap=10
+    //% color="#0fbc11"
+    export function ReSetServoAngle(): void {
+        let buf1 = pins.createBuffer(2);
+        let buf2 = pins.createBuffer(2);
+        buf1[0] = 0xFF;
+        buf1[1] = 0x00;
+        buf2[0] = 0x01;
+        buf2[1] = 0xFF;
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,buf1);
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
+    }
+    //% blockId=XRBIT_SaveServoAngle block="SaveServoAngle"
+    //% weight=94
+    //% blockGap=10
+    //% color="#0fbc11"
+    export function SaveServoAngle(): void {
+        let buf1 = pins.createBuffer(2);
+        let buf2 = pins.createBuffer(2);
+        buf1[0] = 0xFF;
+        buf1[1] = 0x11;
+        buf2[0] = 0x01;
+        buf2[1] = 0xFF;
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,buf1);
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
+    }
 
 }
