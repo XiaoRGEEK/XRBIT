@@ -1,4 +1,10 @@
 {
   "XRBIT.SetServoAngle|block": "设置舵机|编号 %Num|角度 %Angle",
-  "XRBIT.SetServoAngle2|block": "设置舵机|编号 %Num|角度 %Angle"
+  "XRBIT.SetServoBot|block": "设置舵机机器人|动作为 %Num",
+  
+  "XRBIT.MovementGroups.goforward|block": "前进",
+  "XRBIT.MovementGroups.goback|block": "后退",
+  "XRBIT.MovementGroups.turnleft|block": "左转",
+  "XRBIT.MovementGroups.turnright|block": "右转",
+  "XRBIT.MovementGroups.stop|block": "停止"
 }
