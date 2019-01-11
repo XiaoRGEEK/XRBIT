@@ -32,6 +32,18 @@ namespace XRBIT {
         //% blockId="stop" block="stop"
         stop = 0x00
     }
+    export enum SubtepMovement {
+        //% blockId="SubstepForward" block="SubstepForward"
+        SubstepForward = 0x01,
+        //% blockId="SubstepBack" block="SubstepBack"
+        SubstepBack = 0x02,
+        //% blockId="SubstepTurnleft" block="SubstepTurnleft"
+        SubstepTurnleft = 0x03,
+        //% blockId="SubstepTurnright" block="SubstepTurnright"
+        SubstepTurnright = 0x04,
+        //% blockId="stop" block="stop"
+        stop = 0x00
+    }
     function i2cwrite(addr: number, reg: number, value: number): void {
         let buf = pins.createBuffer(2);
         buf[0] = reg;
@@ -75,6 +87,22 @@ namespace XRBIT {
         let buf2 = pins.createBuffer(2);
         buf1[0] = 0xFF;
         buf1[1] = 0x12;
+        buf2[0] = direction;
+        buf2[1] = 0xFF;
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,buf1);
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
+    }
+    //% blockId=XRBIT_SetServoBotSubstep block="SetServoBotSubstep|%direction"
+    //% weight=94
+    //% blockGap=10
+    //% color="#0fbc11"
+    //% Step.min=0 Step.max=20
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
+    export function SetServoBotSubstep(direction: SubtepMovement, Step: number): void {
+        let buf1 = pins.createBuffer(2);
+        let buf2 = pins.createBuffer(2);
+        buf1[0] = 0xFF;
+        buf1[1] = 0x13;
         buf2[0] = direction;
         buf2[1] = 0xFF;
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf1);

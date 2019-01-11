@@ -1,6 +1,7 @@
 {
    "XRBIT.SetServoAngle|block": "設置舵機|編號 %Num|角度 %Angle",
    "XRBIT.SetServoBot|block": "設置舵機機器人|動作為 %Num",
+   "XRBIT.SetServoBotSubstep|block": "設置舵機機器人|分步動作 %direction|步數為 %Step",
 
    "XRBIT.MovementGroups.goforward|block": "前進",
    "XRBIT.MovementGroups.goback|block": "後退",
@@ -8,6 +9,13 @@
    "XRBIT.MovementGroups.turnright|block": "右轉",
    "XRBIT.MovementGroups.stop|block": "停止",
 
+   "XRBIT.SubtepMovement.SubstepForward|block": "單步前進",
+   "XRBIT.SubtepMovement.SubstepBack|block": "單步後退",
+   "XRBIT.SubtepMovement.SubstepTurnleft|block": "單步左转",
+   "XRBIT.SubtepMovement.SubstepTurnright|block": "單步右转",
+   "XRBIT.SubtepMovement.stop|block": "停止",
+
    "XRBIT.SaveServoAngle|block": "保存當前角度為默認值",
    "XRBIT.ReSetServoAngle|block": "恢復所有角度為默認值"
 }
+ 
