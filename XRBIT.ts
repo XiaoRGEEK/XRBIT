@@ -173,7 +173,7 @@ namespace XRBIT {
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
     }
 
-    //% blockId=XR_IRtest
+    //% blockId=XR_IRtest block = "IRtest"
     //% weight=94
     //% blockGap=10
     //% color="#0fbc11"
