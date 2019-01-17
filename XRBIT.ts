@@ -137,8 +137,7 @@ namespace XRBIT {
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
     }
 
-    //% blockId=XR_IRremote block = "XR_IRremote"
-    //% weight=94
+    //% blockId=XR_IRremote block = "ir_remote"
     //% color="#0fbc11"
     export function XR_IRremote(): number {
  
@@ -147,24 +146,24 @@ namespace XRBIT {
             let startcont = 10;
             let i = 0;
             let j = 0;
-            while (startcont--) { 
+            while (startcont--) {
                 control.waitMicros(793);
-                if (pins.digitalReadPin(DigitalPin.P1) == 1) { 
-                    return 0x00;
+                if (pins.digitalReadPin(DigitalPin.P1) == 1) {
+                    return 0;
                 }
             }
             while (pins.digitalReadPin(DigitalPin.P1) == 0);
     
             control.waitMicros(2305);
     
-            if (pins.digitalReadPin(DigitalPin.P1) == 0) { 
-                return 0x00;
+            if (pins.digitalReadPin(DigitalPin.P1) == 0) {
+                return 0;
             }
     
             while (pins.digitalReadPin(DigitalPin.P1) == 1);
     
-            for (i = 0; i < 4; i++) { 
-                for (j = 0; j < 8; j++) { 
+            for (i = 0; i < 4; i++) {
+                for (j = 0; j < 8; j++) {
                     while (pins.digitalReadPin(DigitalPin.P1) == 0);
                     buf[i] >>= 1;
                     control.waitMicros(793);
@@ -176,6 +175,9 @@ namespace XRBIT {
             }
             return buf[2];
         }
+        else {
+            return 0;  
+         }
         
     }
 
