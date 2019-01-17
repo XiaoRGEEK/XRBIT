@@ -174,8 +174,7 @@ namespace XRBIT {
                     }
                 }
             }
-            return buf[2]
-            //serial.writeNumber(buf[2]);
+            return buf[2];
         }
         
     }
