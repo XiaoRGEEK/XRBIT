@@ -142,10 +142,11 @@ namespace XRBIT {
     export function XR_IRremote(): number {
  
         if (pins.digitalReadPin(DigitalPin.P1) == 0) {
-            let buf = pins.createBuffer(4);
+            let buf1 = pins.createBuffer(4);
             let startcont = 10;
             let i = 0;
             let j = 0;
+            let temp = 0;
             while (startcont--) {
                 control.waitMicros(793);
                 if (pins.digitalReadPin(DigitalPin.P1) == 1) {
@@ -165,15 +166,19 @@ namespace XRBIT {
             for (i = 0; i < 4; i++) {
                 for (j = 0; j < 8; j++) {
                     while (pins.digitalReadPin(DigitalPin.P1) == 0);
-                    buf[i] >>= 1;
+                    temp = buf1[i];
+                    temp >>= 1;
+                    buf1[i]=temp;
                     control.waitMicros(793);
                     if (pins.digitalReadPin(DigitalPin.P1) == 1) {
-                        buf[i] |= 0x80;
+                        temp = buf1[i];
+                        temp |= 0x80;
+                        buf1[i] = temp;
                         while (pins.digitalReadPin(DigitalPin.P1) == 1);
                     }
                 }
             }
-            return buf[2];
+            return buf1[2];
         }
         else {
             return 0;  
