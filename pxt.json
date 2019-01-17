@@ -3,8 +3,7 @@
     "version": "0.0.0",
     "description": "XRBIT DRIVER BOARD FOR MICROBIT",
     "dependencies": {
-        "core": "*",
-        "radio": "*"
+        "core": "*"
     },
     "files": [
         "README.md",
