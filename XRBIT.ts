@@ -32,6 +32,30 @@ namespace XRBIT {
         //% blockId="stop" block="stop"
         stop = 0x00
     }
+    
+    export enum IRValue {
+        Power = 162,
+        Menu = 226,
+        Test = 34,
+        Plus = 2,
+        Return = 194,
+        Left = 224,
+        Play = 168,
+        Right = 144,
+        Num0 = 104,
+        Minus = 152,
+        Cancle = 176,
+        Num1 = 48,
+        Num2 = 24,
+        Num3 = 122,
+        Num4 = 16,
+        Num5 = 56,
+        Num6 = 90,
+        Num7 = 66,
+        Num8 = 74,
+        Num9 = 82 
+         
+    }
     export enum SubtepMovement {
         //% blockId="SubstepForward" block="SubstepForward"
         SubstepForward = 0x01,
@@ -137,52 +161,22 @@ namespace XRBIT {
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
     }
 
-    //% blockId=XR_IRremote block = "ir_remote"
+    //% blockId=XR_IRremote block = "irremote on |%IRValue| button pressed"
     //% color="#0fbc11"
-    export function XR_IRremote(): number {
- 
-        if (pins.digitalReadPin(DigitalPin.P1) == 0) {
-            let buf1 = pins.createBuffer(4);
-            let startcont = 10;
-            let i = 0;
-            let j = 0;
-            let temp = 0;
-            while (startcont--) {
-                control.waitMicros(793);
-                if (pins.digitalReadPin(DigitalPin.P1) == 1) {
-                    return 0;
-                }
-            }
-            while (pins.digitalReadPin(DigitalPin.P1) == 0);
-    
-            control.waitMicros(2305);
-    
-            if (pins.digitalReadPin(DigitalPin.P1) == 0) {
-                return 0;
-            }
-    
-            while (pins.digitalReadPin(DigitalPin.P1) == 1);
-    
-            for (i = 0; i < 4; i++) {
-                for (j = 0; j < 8; j++) {
-                    while (pins.digitalReadPin(DigitalPin.P1) == 0);
-                    temp = buf1[i];
-                    temp >>= 1;
-                    buf1[i]=temp;
-                    control.waitMicros(793);
-                    if (pins.digitalReadPin(DigitalPin.P1) == 1) {
-                        temp = buf1[i];
-                        temp |= 0x80;
-                        buf1[i] = temp;
-                        while (pins.digitalReadPin(DigitalPin.P1) == 1);
-                    }
-                }
-            }
-            return buf1[2];
+    export function XR_IRremote(IRValue:IRValue): boolean {
+        let irread: boolean = false;
+        let reg = pins.createBuffer(1);
+        reg[0] = 0x16;
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,reg);
+        let val = pins.i2cReadNumber(XRBIT_ADDRESS, NumberFormat.UInt8BE);
+        if (val == IRValue) {
+            irread = true;
         }
-        else {
-            return 0;  
-         }
+        else { 
+            irread = false;
+        }
+
+        return irread;
         
     }
 

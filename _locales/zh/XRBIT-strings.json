@@ -14,6 +14,7 @@
   "XRBIT.SubtepMovement.SubstepTurnleft|block": "单步左转",
   "XRBIT.SubtepMovement.SubstepTurnright|block": "单步右转",
   "XRBIT.SubtepMovement.stop|block": "停止",
+  "XRBIT.XR_IRremote|block": "红外遥控器按钮|%IRValue|被按下",
 
   "XRBIT.SaveServoAngle|block": "保存当前角度为默认值",
   "XRBIT.ReSetServoAngle|block": "恢复所有角度为默认值"
