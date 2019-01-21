@@ -10,6 +10,8 @@
 //% weight=5 color=#9900CC icon="\uf1b9"
 namespace XRBIT {
     const XRBIT_ADDRESS = 0x17
+    let IRreadflag = false;
+    let IRreaddat = 0x00;
     export enum SER_NUM {
         S1 = 0x01,
         S2 = 0x02,
@@ -161,23 +163,27 @@ namespace XRBIT {
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
     }
 
-    //% blockId=XR_IRremote block = "irremote on |%IRValue| button pressed"
+    //% blockId=XR_IRremote block = "XR_IRremote on |%IRValue| button pressed"
     //% color="#0fbc11"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function XR_IRremote(IRValue:IRValue): boolean {
         let irread: boolean = false;
-        let reg = pins.createBuffer(1);
-        reg[0] = 0x16;
-        pins.i2cWriteBuffer(XRBIT_ADDRESS,reg);
-        let val = pins.i2cReadNumber(XRBIT_ADDRESS, NumberFormat.UInt8BE);
-        if (val == IRValue) {
+        if (!IRreadflag) { 
+            let reg = pins.createBuffer(1);
+            reg[0] = 0x16;
+            pins.i2cWriteBuffer(XRBIT_ADDRESS, reg);
+            IRreaddat = pins.i2cReadNumber(XRBIT_ADDRESS, NumberFormat.UInt8BE);
+            IRreadflag = true;
+        }
+        if (IRreaddat == IRValue) {
             irread = true;
         }
         else { 
             irread = false;
         }
-
-        return irread;
+        return irread;   
         
     }
+    
 
 }
