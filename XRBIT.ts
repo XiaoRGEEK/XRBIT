@@ -12,6 +12,34 @@ namespace XRBIT {
     const XRBIT_ADDRESS = 0x17
     let IRreadflag = false;
     let IRreaddat = 0x00;
+    export enum motor {
+        M1 = 0x14,
+        M2 = 0x15
+    }
+    export enum speed {
+        
+        fwd_100 = 0x1A,
+        fwd_90 = 0x19,
+        fwd_80 = 0x18,
+        fwd_70 = 0x17,
+        fwd_60 = 0x16,
+        fwd_50 = 0x15,
+        fwd_40 = 0x14,
+        fwd_30 = 0x13,
+        fwd_20 = 0x12,
+        fwd_10 = 0x11,
+        stop = 0x00,
+        rev_10 = 0x21,
+        rev_20 = 0x22,
+        rev_30 = 0x23,
+        rev_40 = 0x24,
+        rev_50 = 0x25,
+        rev_60 = 0x26,
+        rev_70 = 0x27,
+        rev_80 = 0x28,
+        rev_90 = 0x29,
+        rev_100 = 0x2A
+    }
     export enum SER_NUM {
         S1 = 0x01,
         S2 = 0x02,
@@ -183,6 +211,21 @@ namespace XRBIT {
         }
         return irread;   
         
+    }
+    //% blockId=SetMotor block="SetMotor|%motor|speed %speed"
+    //% weight=94
+    //% blockGap=10
+    //% color="#0fbc11"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
+    export function SetMotor(motor: SubtepMovement, speed: number): void {
+        let buf1 = pins.createBuffer(2);
+        let buf2 = pins.createBuffer(2);
+        buf1[0] = 0xFF;
+        buf1[1] = motor;
+        buf2[0] = speed;
+        buf2[1] = 0xFF;
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,buf1);
+        pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
     }
     
 
