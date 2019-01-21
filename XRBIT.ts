@@ -217,7 +217,7 @@ namespace XRBIT {
     //% blockGap=10
     //% color="#0fbc11"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
-    export function SetMotor(motor: SubtepMovement, speed: number): void {
+    export function SetMotor(motor: motor, speed: speed): void {
         let buf1 = pins.createBuffer(2);
         let buf2 = pins.createBuffer(2);
         buf1[0] = 0xFF;
