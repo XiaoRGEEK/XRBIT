@@ -163,10 +163,10 @@ namespace XRBIT {
         pins.i2cWriteBuffer(XRBIT_ADDRESS,buf2);
     }
 
-    //% blockId=XR_IRremote block = "XR_IRremote on |%IRValue| button pressed"
+    //% blockId=irremote_on_pressed block = "irremote_on_pressed on |%IRValue| button pressed"
     //% color="#0fbc11"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function XR_IRremote(IRValue:IRValue): boolean {
+    export function irremote_on_pressed(IRValue:IRValue): boolean {
         let irread: boolean = false;
         if (!IRreadflag) { 
             let reg = pins.createBuffer(1);
