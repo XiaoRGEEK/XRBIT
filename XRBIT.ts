@@ -196,13 +196,17 @@ namespace XRBIT {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function irremote_on_pressed(IRValue:IRValue): boolean {
         let irread: boolean = false;
-        if (!IRreadflag) { 
+        /*if (!IRreadflag) { 
             let reg = pins.createBuffer(1);
             reg[0] = 0x16;
             pins.i2cWriteBuffer(XRBIT_ADDRESS, reg);
             IRreaddat = pins.i2cReadNumber(XRBIT_ADDRESS, NumberFormat.UInt8BE);
             IRreadflag = true;
-        }
+        }*/
+        let reg = pins.createBuffer(1);
+        reg[0] = 0x16;
+        pins.i2cWriteBuffer(XRBIT_ADDRESS, reg);
+        IRreaddat = pins.i2cReadNumber(XRBIT_ADDRESS, NumberFormat.UInt8BE);
         if (IRreaddat == IRValue) {
             irread = true;
         }
