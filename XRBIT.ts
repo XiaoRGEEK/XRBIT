@@ -10,8 +10,6 @@
 //% weight=5 color=#9900CC icon="\uf1b9"
 namespace XRBIT {
     const XRBIT_ADDRESS = 0x17
-    let IRreadflag = false;
-    let IRreaddat = 0x00;
     export enum motor {
         M1 = 0x14,
         M2 = 0x15
@@ -64,26 +62,26 @@ namespace XRBIT {
     }
     
     export enum IRValue {
-        Power = 162,
-        Menu = 226,
-        Test = 34,
-        Plus = 2,
-        Return = 194,
-        Left = 224,
-        Play = 168,
-        Right = 144,
-        Num0 = 104,
-        Minus = 152,
-        Cancle = 176,
-        Num1 = 48,
-        Num2 = 24,
-        Num3 = 122,
-        Num4 = 16,
-        Num5 = 56,
-        Num6 = 90,
-        Num7 = 66,
-        Num8 = 74,
-        Num9 = 82 
+        Power = 0x45,
+        Menu = 0x47,
+        Test = 0x44,
+        Plus = 0x40,
+        Return = 0x43,
+        Left = 0x07,
+        Play = 0x15,
+        Right = 0x09,
+        Num0 = 0x16,
+        Minus = 0x19,
+        Cancle = 0x0D,
+        Num1 = 0x0C,
+        Num2 = 0x18,
+        Num3 = 0x5E,
+        Num4 = 0x08,
+        Num5 = 0x1C,
+        Num6 = 0x5A,
+        Num7 = 0x42,
+        Num8 = 0x52,
+        Num9 = 0x4A 
          
     }
     export enum SubtepMovement {
@@ -196,13 +194,7 @@ namespace XRBIT {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function irremote_on_pressed(IRValue:IRValue): boolean {
         let irread: boolean = false;
-        /*if (!IRreadflag) { 
-            let reg = pins.createBuffer(1);
-            reg[0] = 0x16;
-            pins.i2cWriteBuffer(XRBIT_ADDRESS, reg);
-            IRreaddat = pins.i2cReadNumber(XRBIT_ADDRESS, NumberFormat.UInt8BE);
-            IRreadflag = true;
-        }*/
+        let IRreaddat = 0x00;
         let reg = pins.createBuffer(1);
         reg[0] = 0x16;
         pins.i2cWriteBuffer(XRBIT_ADDRESS, reg);
